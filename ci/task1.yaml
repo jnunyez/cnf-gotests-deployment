@@ -1,0 +1,10 @@
+apiVersion: tekton.dev/v1beta1
+kind: ClusterTask 
+metadata:
+  name: task1
+spec:
+  steps:
+    - image: alpine
+      script: |
+        #!/bin/sh
+        echo 'Meeow!! from Tekton'

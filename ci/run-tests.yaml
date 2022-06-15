@@ -1,0 +1,50 @@
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: run-ptp-tests
+spec:
+  workspaces:
+  - name: my-workspace
+  params:
+  - name: deployment-name
+    type: string
+    description: name of the deployment to be patched
+    default: test
+  - name: git-url
+    type: string
+    description: url of the git repo for the code of deployment
+    #default: "https://gitlab.cee.redhat.com/cnf/cnf-gotests/-/tree/master/cnf-gotests"
+    default: "https://github.com/openshift-kni/cnf-features-deploy"
+  - name: git-revision
+    type: string
+    description: revision to be used from repo of the code for deployment
+    default: master
+  tasks:
+  - name: fetch-repository
+    taskRef:
+      name: git-clone
+      kind: ClusterTask
+    workspaces:
+    - name: output
+      workspace: my-workspace
+    params:
+    - name: url
+      value: $(params.git-url)
+    - name: subdirectory
+      value: ""
+    - name: deleteExisting
+      value: "true"
+    - name: revision
+      value: $(params.git-revision)  
+  - name: set-environment
+    taskRef:
+      name: task1
+      kind: ClusterTask
+    runAfter:
+      - fetch-repository
+  - name: run-test-suite
+    taskRef:
+      name: task2
+      kind: ClusterTask
+    runAfter:
+      - set-environment
