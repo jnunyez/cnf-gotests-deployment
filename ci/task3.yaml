@@ -6,5 +6,3 @@ spec:
   steps:
     - name: run-cnf-tests
       image: quay.io/openshift-kni/cnf-tests:4.8.0
-      command: ["/bin/bash"]
-      args: ["-c", "/usr/bin/test/run.sh"]
