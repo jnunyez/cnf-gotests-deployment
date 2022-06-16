@@ -5,6 +5,14 @@ metadata:
 spec:
   steps:
     - image: alpine
+      name: meow
       script: |
         #!/bin/sh
         echo 'Meeow!! from Tekton'
+    - image: busybox
+      name: list
+      command: ["ls", "-ltr","/workspace"]
+  workspaces:
+    - name: src
+      description: path with the src code
+      mountPath: /workspace/src

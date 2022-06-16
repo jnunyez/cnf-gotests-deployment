@@ -5,6 +5,7 @@ metadata:
 spec:
   workspaces:
   - name: my-workspace
+    
   params:
   - name: deployment-name
     type: string
@@ -40,6 +41,9 @@ spec:
     taskRef:
       name: task1
       kind: ClusterTask
+    workspaces:
+      - name: src
+        workspace: my-workspace
     runAfter:
       - fetch-repository
   - name: run-test-suite

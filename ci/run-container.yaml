@@ -1,0 +1,17 @@
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: run-cnf-tests
+spec:
+  workspaces:
+  - name: my-workspace
+  params:
+  - name: deployment-name
+    type: string
+    description: name of the deployment to be patched
+    default: test
+  tasks:
+  - name: run-test-suite
+    taskRef:
+      name: task3
+      kind: ClusterTask
