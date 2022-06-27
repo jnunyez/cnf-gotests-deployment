@@ -4,7 +4,11 @@ kind: Kustomization
 
 commonAnnotations:
 
-resources:
+bases:
+  # task to create kubeconfig file
   - https://raw.githubusercontent.com/tektoncd/catalog/main/task/kubeconfig-creator/0.1/kubeconfig-creator.yaml
+  # task to run oc commands
   - https://raw.githubusercontent.com/tektoncd/catalog/main/task/openshift-client/0.2/openshift-client.yaml
+resources:
+  # pipeline that queries workload cluster
   - 01-query-workload-cluster.yaml
