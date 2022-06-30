@@ -1,0 +1,16 @@
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: secreto
+  namespace: cnf-gotests-pipeline
+spec:
+  encryptedData:
+    ghtok: AgAe6YYaUlDrE08oU17Lccgu3vxF5wAc2KZZyZU/T0glHz+BFG1bEgkQA1tQvbELkZa6HhFSPozchFZhj2MdED3+3txtWz9ipwNkrUyHdJixDZkrYYMdCYiczf1mOCt4o6gkYAUarCG4F8HY785YL4IXegTPM2vT5mXpZWSpatzl+kuatjlOQpTvKibF/+7BeIl8ewDGR/bcBd6LJSYNLv34rEubKCaRszN1Hok8ejRKOAS2fnbWo01A8/hvhXvAczZ2rkg+h6N1myXylT1Tc8NnXHr8MpJsCuKj1ydLaheZHTvNAZOkML4N328IUF8Bb889YI8vtLmK6ttM703tNTUtl8GE8SGUnzQYPQMyiOxseu/Rkgr41rw9Z5ybR19r9qc7ngc8UBZG8ixDhqXhkwR9rXaloLx4mMEr3FgyingKRy++7r5wfAd4BSTi260zD03aTgZdtAPZDs0Ld379WPziVJ7k5YwmVW+Jj4K1LwPliI/KtoW55AM6XTZO0fFmx2TdsCF9t23kkTO9bQYmzkmvfaJepSyfUt6TsjBG6M/q7JHw0BT8yxUAb+LB8CcV/1EoYF5fjxN5/OQSVtO88JTFAXm9jXJjaGoAbCwVAN6qcDhsw3ZL+23Yk4btXCFWH8G1qhaf+OpLcOU/d8FineHRVpjJmkpO2X3+lBFsrq+OJqkSIzVngewo/wwXWFyP4+e4cc6hqC29g9TQHsQl8wb/cbYKkHEDSIToYJEzThFy8LJ9e8ky186H
+  template:
+    data: null
+    metadata:
+      creationTimestamp: null
+      name: secreto
+      namespace: cnf-gotests-pipeline
+

@@ -1,0 +1,17 @@
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: jnunez-pull-secret
+  namespace: cnf-gotests-pipeline
+spec:
+  encryptedData:
+    .dockerconfigjson: AgDGfijVrVwLYwKeatE7vRUoADt3rytvXXChvwPiaC97J2fkFWES1G/DZ+Dp7b3cVotiKdDfz3t/naV+ujchwC4JpJ8cfv5fvXMcPQCK3S3py15kVVn1A+g4JRke0ljcHk6hOZz/q0Y8qXG4wz3rUigybG4JpDGJ++lshTxtUgfFTyliiAA9oPwn0xWM23HCLZslM3gM/U5PVnevHd4LkckfraJZoKs0Dc7Kx7mehXBZMOwwFZ/SpXZ3Yjp4lXk+RLKT9E31DtV3rdw+WvSftFyMSC7xPOiJH/2DfxSWpDJ7Un4sjY/WDVzdqeJtZ3niPcrEgHGr3ndX1lX/aaar12cajatji0yKFNHpFGifcRSs0mnQM0EyNXmZBUZgxUEJWQxbuNW7NTdYraigC2L56Eh5/c+35yOyRWVYF1tff+l65ZZ/j+4vcXT5K+kZU4bpO3e6iBb2bTYyWJpJozOs8axPlAFtiUIG9jCQoFDHgZyoN5DmHZwGOcm2X2gjfuEuBu9Du2GU8WAFkqZNFIY8do9h5dh4oVpmvzitC10bgwSZdqyL9p8zoAKGBCZc+eaTHFUaZhWPp/XeQotxOeze4Lr3HjVA1xotTxg3c68J6YG6+OlY7qeWNTO3QXekqY5SXlnOk0vJ8r0lPgUsL++GUdmcJt739C0ggeEC7Ptns1pNTS3EYpBCwu2i4O9NpB+mA5Dn5ea+nt2nWqZ1DXMSECpE4vsN3n7xAVt9t9rJLfG4fTHOrjvAxrJ+bmhg7gfVJLhTcpjeqA8rtO33REYgKeDB3zVp22aeCtUskXwbCFUU+tqmSUVN7bPm9Hh0AMjzKMlABp100mY9Si00okvy/+sqofooJNfINWf9dYo6+zyASkUU31GNlfNYf/K+p2lGiA+h9y2UL/rufv16RRwAYCQwbRH3xDkhJjDFaqy6fmer
+  template:
+    data: null
+    metadata:
+      creationTimestamp: null
+      name: jnunez-pull-secret
+      namespace: cnf-gotests-pipeline
+    type: kubernetes.io/dockerconfigjson
+
