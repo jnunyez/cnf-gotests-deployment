@@ -1,0 +1,81 @@
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: cnf-gotests
+  annotations:
+    argocd.argoproj.io/sync-wave: "4"
+spec:
+  params:
+  - name: GIT_REPO
+    type: string
+    description: the clonable repo source e.g.  https://github.com/tektoncd/pipeline.git
+  - name: GIT_REF
+    type: string
+    description: git revision to checkout (branch, tag, sha, ref…)
+  - name: IMAGE_DEST
+    type: string
+    description: Base image repo url
+  - name: SRC_DOCKERFILE
+    type: string
+    description: path to the dockerfile to use
+  tasks:
+  - name: clone-repo
+    params:
+    - name: url
+      value: $(params.GIT_REPO)
+    - name: revision
+      value: $(params.GIT_REF)
+    taskRef:
+      name: git-clone
+      kind: ClusterTask
+    workspaces:
+    - name: output
+      workspace: cnf-gotests
+  - name: set-image-tag
+    params:
+      - name: commit
+        value: $(tasks.clone-repo.results.commit)
+      - name: url
+        value: $(tasks.clone-repo.results.url)
+      - name: imagestream
+        value: $(params.IMAGE_DEST)
+    taskRef:
+      name: set-tag
+    runAfter:
+      - clone-repo
+    workspaces:
+    - name: tagput
+      workspace: cnf-gotests
+  - name: build-n-push
+    params:
+      - name: IMAGE
+        value: $(tasks.set-image-tag.results.tag)
+      - name: DOCKERFILE
+        value: $(workspaces.source.path)/$(params.SRC_DOCKERFILE)
+      - name: CONTEXT
+        value: $(workspaces.source.path)
+    taskRef:
+      name: buildah
+      kind: ClusterTask
+    runAfter:
+      - set-image-tag
+    workspaces:
+    - name: source
+      workspace: cnf-gotests
+  - name: tag-to-latest
+    params:
+      - name: srcImageURL
+        value: docker://$(tasks.set-image-tag.results.tag)
+      - name: destImageURL
+        value: docker://$(params.IMAGE_DEST):latest
+    taskRef:
+      name: skopeo-copy
+      kind: ClusterTask
+    runAfter:
+      - build-n-push
+    workspaces:
+    - name: images-url
+      workspace: cnf-gotests
+  workspaces:
+  - description: This workspace for this pipeline
+    name: cnf-gotests
