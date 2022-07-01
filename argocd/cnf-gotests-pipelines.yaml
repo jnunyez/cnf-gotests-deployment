@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cnf-gotests-pipeline
+  namespace: argocd
+spec:
+  destination:
+    namespace: cnf-gotests-pipeline
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: ../tekton
+    repoURL: https://github.com/redhat-partners-solutions/cnfgotests-deploy
+    targetRevision: main
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+  sync:
+    comparedTo:
+      destination:
+        namespace: cnf-gotests-pipeline
+        server: https://kubernetes.default.svc
+      source:
+        path: ../tekton
+        repoURL: https://github.com/redhat-partners-solutions/cnfgotests-deploy
+        targetRevision: main
