@@ -9,8 +9,8 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: ../tekton
-    repoURL: https://github.com/redhat-partners-solutions/cnfgotests-deploy
+    path: tekton
+    repoURL: https://github.com/jnunyez/cnfgotests-deploy
     targetRevision: main
   syncPolicy:
     automated:
@@ -22,6 +22,6 @@ spec:
         namespace: cnf-gotests-pipeline
         server: https://kubernetes.default.svc
       source:
-        path: ../tekton
-        repoURL: https://github.com/redhat-partners-solutions/cnfgotests-deploy
+        path: tekton
+        repoURL: https://github.com/jnunyez/cnfgotests-deploy
         targetRevision: main
