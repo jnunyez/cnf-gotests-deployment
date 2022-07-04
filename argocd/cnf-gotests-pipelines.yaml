@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: cnf-gotests-pipeline
-  namespace: argocd
+  namespace: openshift-gitops
 spec:
   destination:
     namespace: cnf-gotests-pipeline
@@ -10,7 +10,7 @@ spec:
   project: default
   source:
     path: tekton
-    repoURL: https://github.com/jnunyez/cnfgotests-deploy
+    repoURL: https://github.com/jnunyez/gitops-playground
     targetRevision: main
   syncPolicy:
     automated:
@@ -23,5 +23,5 @@ spec:
         server: https://kubernetes.default.svc
       source:
         path: tekton
-        repoURL: https://github.com/jnunyez/cnfgotests-deploy
+        repoURL: https://github.com/jnunyez/gitops-playground
         targetRevision: main
