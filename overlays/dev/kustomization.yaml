@@ -12,5 +12,7 @@ patchesJson6902:
     name: cnf-gotests
     version: v1
 images:
+- name: quay.io/jnunez/cnf-gotests
+  newTag: 0509f4
 - name: quay.io/jnunyez/cnf-gotests
   newTag: INIT_ME
