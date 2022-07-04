@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: cnf-gotests
+  name: cnf-gotests
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cnf-gotests
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: cnf-gotests
+    spec:
+      containers:
+      - image: PATCH_ME
+        name: cnf-gotests
+        resources: {}
+status: {}
