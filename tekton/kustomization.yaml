@@ -6,9 +6,15 @@ commonAnnotations:
 
 bases:
   # task to create kubeconfig file
-  - https://raw.githubusercontent.com/tektoncd/catalog/main/task/kubeconfig-creator/0.1/kubeconfig-creator.yaml
+  #- https://raw.githubusercontent.com/tektoncd/catalog/main/task/kubeconfig-creator/0.1/kubeconfig-creator.yaml
   # task to run oc commands
-  - https://raw.githubusercontent.com/tektoncd/catalog/main/task/openshift-client/0.2/openshift-client.yaml
+  #- https://raw.githubusercontent.com/tektoncd/catalog/main/task/openshift-client/0.2/openshift-client.yaml
+  # task to run git clone
+  - https://raw.githubusercontent.com/tektoncd/catalog/main/task/git-clone/0.6/git-clone.yaml
+  # task to run set image tag
+
+  #task to build and push
+
 resources:
   # pipeline that queries workload cluster
-  - 01-query-workload-cluster.yaml
+  - 03-run-pipeline.yaml
