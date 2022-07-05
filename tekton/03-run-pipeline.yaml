@@ -8,7 +8,7 @@ spec:
   params:
   - name: GIT_REPO
     type: string
-    description: the clonable repo source e.g.  https://github.com/tektoncd/pipeline.git
+    description: the clonable repo source e.g.
   - name: GIT_REF
     type: string
     description: git revision to checkout (branch, tag, sha, ref…)
@@ -18,6 +18,15 @@ spec:
   - name: SRC_DOCKERFILE
     type: string
     description: path to the dockerfile to use
+  - name: DEPLOY_REPO
+    type: string
+    description: Git repo where deployment manifests are
+  - name: DEPLOY_REF
+    type: string
+    description: git revision to checkout from deployment repo (branch)
+  - name: OVERLAY_DIR
+    type: string
+    description: directory where dev overlay is
   tasks:
   - name: clone-repo
     params:
@@ -76,6 +85,59 @@ spec:
     workspaces:
     - name: images-url
       workspace: cnf-gotests
+  - name: clone-deployment-repo
+    params:
+    - name: url
+      value: $(params.DEPLOY_REPO)
+    - name: revision
+      value: $(params.DEPLOY_REF)
+    taskRef:
+      name: git-clone
+      kind: ClusterTask
+    runAfter:
+      - build-n-push
+    workspaces:
+    - name: output
+      workspace: cnf-gotests
+  - name: patch-dev
+    taskRef:
+      name: kustomize
+    params:
+      - name: imagestream
+        value: $(tasks.set-image-tag.results.tag)
+      - name: overlaypath
+        value: overlays/$(params.OVERLAY_DIR)
+    runAfter:
+      - clone-deployment-repo
+      - tag-to-latest
+    workspaces:
+      - name: source
+        workspace: cnf-gotests
+  - name: commit-to-dev
+    params:
+    - name: GIT_USER_NAME
+      value: jnunyez
+    - name: GIT_USER_EMAIL
+      value: jonunyez@gmail.com
+    - name: GIT_SCRIPT
+      value: |
+        git checkout -b $(tasks.set-image-tag.results.tagref)
+        git add -A .
+        git commit -am "Run $(tasks.set-image-tag.results.tagref): Updating image to $(tasks.set-image-tag.results.tag) on $(params.OVERLAY_DIR)"
+        GIT_SSH_COMMAND="ssh -i /tekton/home/.ssh/id_gitsshkey -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no" git push origin HEAD:main
+    taskRef:
+      name: git-cli
+      kind: ClusterTask
+    runAfter:
+      - patch-dev
+    workspaces:
+    - name: source
+      workspace: cnf-gotests
+    - name: input
+      workspace: scratch
+
   workspaces:
   - description: This workspace for this pipeline
     name: cnf-gotests
+  - description: This is a scratch disk
+    name: scratch
