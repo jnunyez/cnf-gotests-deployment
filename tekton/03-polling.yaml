@@ -1,0 +1,33 @@
+apiVersion: polling.tekton.dev/v1alpha1
+kind: Repository
+metadata:
+  name: cnf-gotests
+spec:
+  url: https://github.com/redhat-partner-solutions/cnf-gotests.git
+  ref: vran_enablement
+  frequency: 1m
+  type: github
+  pipelineRef:
+    serviceAccountName: pipeline
+    name: cnf-gotests
+    namespace: cnf-gotests-pipeline # optional: if provided, the pipelinerun will be created in this namespace to reference the pipeline.
+    params:
+    - name: sha
+      expression: commit.sha
+    - name: repoURL
+      expression: repoURL
+    workspaces:
+    - name: cnf-gotests
+      volumeClaimTemplate:
+        spec:
+          accessModes:
+            - ReadWriteOnce
+          resources:
+            requests:
+              storage: 1Gi
+    - name: scratch
+      emptyDir: {}
+  auth:
+    secretRef:
+      name: ghtkn
+    key: ghtkn

@@ -9,24 +9,31 @@ spec:
   - name: GIT_REPO
     type: string
     description: the clonable repo source e.g.
+    default: git@github.com:redhat-partner-solutions/cnf-gotests.git
   - name: GIT_REF
     type: string
     description: git revision to checkout (branch, tag, sha, ref…)
+    default: vran_enablement
   - name: IMAGE_DEST
     type: string
     description: Base image repo url
+    default: quay.io/jnunez/cnf-gotests
   - name: SRC_DOCKERFILE
     type: string
     description: path to the dockerfile to use
+    default: Dockerfile
   - name: DEPLOY_REPO
     type: string
     description: Git repo where deployment manifests are
+    default: https://github.com/jnunyez/gitops-playground
   - name: DEPLOY_REF
     type: string
     description: git revision to checkout from deployment repo (branch)
+    default: main
   - name: OVERLAY_DIR
     type: string
     description: directory where dev overlay is
+    default: dev
   tasks:
   - name: clone-repo
     params:
