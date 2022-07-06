@@ -27,11 +27,11 @@ spec:
         name: cnf-gotests
       params:
         - name: GIT_REPO
-          value: git@github.com:jnunyez//cnf-gotests.git
+          value: git@github.com:jnunyez/redhat-partner-solutions/cnf-gotests.git
         - name: GIT_REF
           value: vran_enablement
         - name: IMAGE_DEST
-          value: quay.io/jnunez/cnf-gotests
+          value: quay.io/redhat-partner-solutions/cnf-gotests
         - name: SRC_DOCKERFILE
           value: Containerfile
       workspaces:
