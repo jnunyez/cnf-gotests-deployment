@@ -13,4 +13,4 @@ patchesJson6902:
     version: v1
 images:
 - name: quay.io/jnunez/cnf-gotests
-  newTag: 18b939
+  newTag: 8ff59c
