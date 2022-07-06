@@ -10,7 +10,7 @@ spec:
   project: default
   source:
     path: overlays/dev
-    repoURL: https://github.com/jnunyez/gitops-playground
+    repoURL: https://github.com/jnunyez/cnf-gotests-deployment
     targetRevision: main
   syncPolicy:
     automated:
@@ -23,5 +23,5 @@ spec:
         server: https://kubernetes.default.svc
       source:
         path: overlays/dev
-        repoURL: https://github.com/jnunyez/gitops-playground
+        repoURL: https://github.com/jnunyez/cnf-gotests-deployment
         targetRevision: main
