@@ -25,7 +25,7 @@ spec:
   - name: DEPLOY_REPO
     type: string
     description: Git repo where deployment manifests are
-    default: https://github.com/jnunyez/cnf-gotests-deployment
+    default: git@github.com:jnunyez/cnf-gotests-deployment.git
   - name: DEPLOY_REF
     type: string
     description: git revision to checkout from deployment repo (branch)
