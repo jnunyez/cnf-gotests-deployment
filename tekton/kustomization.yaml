@@ -12,9 +12,13 @@ bases:
   # task to run git clone
   - https://raw.githubusercontent.com/tektoncd/catalog/main/task/git-clone/0.6/git-clone.yaml
   # task to run set image tag
-
+  - 03-task-set-tag.yaml
+  # task to kustomize
+  - 03-task-kustomize.yaml
+  # operator to watch git repos and trigger tekton pipelines
+  - https://github.com/bigkevmcd/tekton-polling-operator/releases/download/v0.4.0/release-v0.4.0.yaml
   #task to build and push
 
 resources:
-  # pipeline that queries workload cluster
+  # pipeline to be triggered
   - 03-run-pipeline.yaml
