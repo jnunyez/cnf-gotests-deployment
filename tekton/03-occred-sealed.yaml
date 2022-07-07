@@ -1,16 +1,23 @@
-apiVersion: bitnami.com/v1alpha1
-kind: SealedSecret
-metadata:
-  creationTimestamp: null
-  name: octkn
-  namespace: cnf-gotests-pipeline
-spec:
-  encryptedData:
-    octkn: AgB2e6oM4U7Z0+2AQi13eeddt4HvGMcb5MbEItQPTtWe7T6ZU9TSfzkBMEKimNcv9ATkz2w/Wwntci7YSIilcI5AxMFhexQEgl7RrWSgEkFu2816SqDC5hYPN7m0jReELx1DK6l37pJStUNy0uqik4Gbgh7dVkmxkWanqg9bK5mLpNi7SLyWvcC+j9cEjYekxI16M8EYXsRanYOqQR0KTV/ApX/xuGBeo0Tq26QXmnFqG5lBoXr2bnCqzasGTOALVnBmCBw5/6kg97MSpbJG4upryTI4bV3gOTcOzb6200ZNXoqxR4FJxUqsuW+oQCZwjwE0nyNxxfyyljPgwKvdNi3821NkHcT0SosD//H8xPZkoavt9Op3sA8fSzM909p8yHaHHTvaJOtZoUoB8hDycyp6UeJfGF0+h7yKAdv4nIsa8lloC2gIMHN7lDb1/tRQnWMIU1R+pRNorijDJrVk4n7Kzp7LJuvD0mU6sS/EHnFEViqVt9mEfWBZe+AZPwFVwb6tEZ7qgtG0Y4t6j+ZuEJaep3MVxG0UWE6ODNUR+sgTUoaqVFOkwD7+Ab8OCAt3KUmZ4Y7CK8U+PdCNubtwB+LCazRJEM+mt/mDf+RQOBvx2I77VqYv+kHDlNun8dKBvN7hxev9wASt3MS7kx+Vd4PJYVXD3FG5Eb+RRwwV5j/1Z1FHysDLj8iKUUjSKV+u+IP8orAq4t8Q6bos1CNbur9RE6mntm6Zs08b4VsbplzjWL2iFEuVdOX4Krb3zZkO9il51g==
-  template:
-    data: null
-    metadata:
-      creationTimestamp: null
-      name: octkn
-      namespace: cnf-gotests-pipeline
-
+{
+  "kind": "SealedSecret",
+  "apiVersion": "bitnami.com/v1alpha1",
+  "metadata": {
+    "name": "regcred",
+    "namespace": "cnf-gotests-pipeline",
+    "creationTimestamp": null
+  },
+  "spec": {
+    "template": {
+      "metadata": {
+        "name": "regcred",
+        "namespace": "cnf-gotests-pipeline",
+        "creationTimestamp": null
+      },
+      "type": "kubernetes.io/dockerconfigjson",
+      "data": null
+    },
+    "encryptedData": {
+      ".dockerconfigjson": "AgDCP7B2mLFtYXzaI0b02TFbxU7+83XsXm1Y4aR1pKbWIXXMyuMjDCwwj93Gm8a1/tFYPB7HNide8lxuySP43FCDYE2q1L8OfNwCQuFE5CE3bSezlgg33pAYqG+ONY2cI/ebNXqFKM9z89lSjBlGdGPQKG97rRxJ3foRnPO1RVBgdEafkOLVYr8+QXVqoIv6/16M+JMBAMJQSIjKh1rYyAiv5rR6HMrNWPg+kVnMsB2yaGQaxE1AbSLCQX0KGtwQbvT2RoiSTSGe+6gd5VTNqn1m1b5lSquSkxwAHU1gpSqUFJlEAFMueSE3H4TVgJ1f3QgN2lTwIPU+k/twsaJSIXzVxM1oIg4aAgmyP44faBi4y1Gl1zn7qLy1Roeq7ER8e0n2fEH9Du6+qUEDdmIO9bzocj6E54ZjxAFB0adglZeyohyx1XB3Zb2VNaDaf+Xqfucy/Y1TeQ41klR9pRjqGt2rg0h+3nYzj4fXqJ9ojp4JEfz0MigD4cz92i7lp8j8f7eHLc8+3I2Lc/rHLYNu6/0+JfDA7b4uYAPzh/3kIrBCC1vYIsUDIQRsmvr2uFeFfiSyU/f/bS5Ikt0HloG6kmZ6Y3jgEsn8H0ZgTB3HICCSK+lWV0Ah5M+isi4OuGx/DtqfhF2ACgbf4xqPg2sAQusbYDmX/TVPzR0I8+DqVrmxWWiMCXP6GX1qYKbKg9Ycnxqa+z+WDw1G5lLRFyiHLR2xcOvtg3xBKVJw5BUbQfGGj2Ass1+XeoKwie8P9+uoxqaMSrKPsC/gstliSZl5t+Nr3JHNmNVxdCQYGHbGhDS+kRP/vYu4kfJjaPnRvIm9arseBtCYsR4dz9SbhKMA+SaoTdRhz7aYKkRQ11E/6kqC6+/CUM/6S8rQET/yJ97D75pjYJbAhWxClbNTJUJg06B1fCJD3vSsfdXmvtskWx+7/P8CyciSEvsFkcvF9z8Q0hSpd1/miQMHDFUViPlheuenbJrX7NIt2YIOynTKLxv9FMyK6P8lon0Vl62ZIjRO06OQ"
+    }
+  }
+}

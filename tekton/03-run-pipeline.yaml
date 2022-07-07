@@ -17,7 +17,7 @@ spec:
   - name: IMAGE_DEST
     type: string
     description: Base image repo url
-    default: quay.io/jnunez/cnf-gotests
+    default: image-registry.openshift-image-registry.svc:5000/openshift/cnf-gotests
   - name: SRC_DOCKERFILE
     type: string
     description: path to the dockerfile to use
@@ -128,7 +128,6 @@ spec:
       value: jonunyez@gmail.com
     - name: GIT_SCRIPT
       value: |
-        ls -la /root/.ssh
         git checkout -b $(tasks.set-image-tag.results.tagref)
         git add -A .
         git commit -am "Run $(tasks.set-image-tag.results.tagref): Updating image to $(tasks.set-image-tag.results.tag) on $(params.OVERLAY_DIR)"
