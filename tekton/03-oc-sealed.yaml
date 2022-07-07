@@ -1,0 +1,16 @@
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: octkn
+  namespace: cnf-gotests-pipeline
+spec:
+  encryptedData:
+    octkn: AgB2e6oM4U7Z0+2AQi13eeddt4HvGMcb5MbEItQPTtWe7T6ZU9TSfzkBMEKimNcv9ATkz2w/Wwntci7YSIilcI5AxMFhexQEgl7RrWSgEkFu2816SqDC5hYPN7m0jReELx1DK6l37pJStUNy0uqik4Gbgh7dVkmxkWanqg9bK5mLpNi7SLyWvcC+j9cEjYekxI16M8EYXsRanYOqQR0KTV/ApX/xuGBeo0Tq26QXmnFqG5lBoXr2bnCqzasGTOALVnBmCBw5/6kg97MSpbJG4upryTI4bV3gOTcOzb6200ZNXoqxR4FJxUqsuW+oQCZwjwE0nyNxxfyyljPgwKvdNi3821NkHcT0SosD//H8xPZkoavt9Op3sA8fSzM909p8yHaHHTvaJOtZoUoB8hDycyp6UeJfGF0+h7yKAdv4nIsa8lloC2gIMHN7lDb1/tRQnWMIU1R+pRNorijDJrVk4n7Kzp7LJuvD0mU6sS/EHnFEViqVt9mEfWBZe+AZPwFVwb6tEZ7qgtG0Y4t6j+ZuEJaep3MVxG0UWE6ODNUR+sgTUoaqVFOkwD7+Ab8OCAt3KUmZ4Y7CK8U+PdCNubtwB+LCazRJEM+mt/mDf+RQOBvx2I77VqYv+kHDlNun8dKBvN7hxev9wASt3MS7kx+Vd4PJYVXD3FG5Eb+RRwwV5j/1Z1FHysDLj8iKUUjSKV+u+IP8orAq4t8Q6bos1CNbur9RE6mntm6Zs08b4VsbplzjWL2iFEuVdOX4Krb3zZkO9il51g==
+  template:
+    data: null
+    metadata:
+      creationTimestamp: null
+      name: octkn
+      namespace: cnf-gotests-pipeline
+
