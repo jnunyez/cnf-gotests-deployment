@@ -7,3 +7,4 @@ metadata:
 secrets:
   - name: ghkey
   - name: qcred
+  - name: octkn
