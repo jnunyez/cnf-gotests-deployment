@@ -1,0 +1,39 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-wave: "4"
+  labels:
+    tekton.dev/pipeline: cnf-gotests
+  name: cnf-gotests-build-deploy
+  namespace: cnf-gotests-pipeline
+spec:
+  params:
+  - name: GIT_REPO
+    value: git@github.com:redhat-partner-solutions/cnf-gotests.git
+  - name: GIT_REF
+    value: vran_enablement
+  - name: IMAGE_DEST
+    value: image-registry.openshift-image-registry.svc:5000/openshift/cnf-gotests
+  - name: SRC_DOCKERFILE
+    value: Dockerfile
+  - name: DEPLOY_REPO
+    value: git@github.com:jnunyez/cnf-gotests-deployment.git
+  - name: DEPLOY_REF
+    value: main
+  - name: OVERLAY_DIR
+    value: dev
+  pipelineRef:
+    name: cnf-gotests
+  serviceAccountName: pipeline
+  workspaces:
+    - name: cnf-gotests
+      volumeClaimTemplate:
+        spec:
+          accessModes:
+            - ReadWriteOnce
+          resources:
+            requests:
+              storage: 1Gi
+    - name: scratch
+      emptyDir: {}
