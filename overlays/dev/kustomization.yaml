@@ -15,4 +15,4 @@ images:
 - name: image-registry.openshift-image-registry.svc:5000/openshift/cnf-gotests
   newTag: 7d1b02
 - name: quay.io/jnunez/cnf-gotests
-  newTag: 7d1b02
+  newTag: cd4e77
