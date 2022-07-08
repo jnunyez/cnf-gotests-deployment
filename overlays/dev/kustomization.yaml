@@ -13,4 +13,4 @@ patchesJson6902:
     version: v1
 images:
 - name: image-registry.openshift-image-registry.svc:5000/openshift/cnf-gotests
-  newTag: e1d950
+  newTag: 7bc390
